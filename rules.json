@@ -1,0 +1,14 @@
+[
+  {
+    "id": "rev1",
+    "condition": "len(input_text.split()) < 2",
+    "weight": 4,
+    "recommendation": "Diversify your revenue streams."
+  },
+  {
+    "id": "cs1",
+    "condition": "len(input_text) < 20",
+    "weight": 3,
+    "recommendation": "Provide more detail for customer segments."
+  }
+]
