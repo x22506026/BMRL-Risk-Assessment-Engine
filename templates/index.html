@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Business Model Risk Lens</title>
+  <style>
+    /* Base reset */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      color: #333;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2rem;
+      color: #2c3e50;
+    }
+    form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 15px;
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    label {
+      display: flex;
+      flex-direction: column;
+      font-weight: bold;
+      font-size: 0.9rem;
+      color: #34495e;
+    }
+    textarea {
+      margin-top: 5px;
+      padding: 8px;
+      font-size: 0.9rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      resize: vertical;
+      min-height: 80px;
+    }
+    .hint {
+      font-size: 0.8rem;
+      color: #7f8c8d;
+      margin-top: 4px;
+    }
+    button {
+      grid-column: 1 / -1;
+      padding: 12px;
+      font-size: 1rem;
+      background: #27ae60;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #219150;
+    }
+    pre#output {
+      grid-column: 1 / -1;
+      background: #2c3e50;
+      color: #ecf0f1;
+      padding: 15px;
+      border-radius: 6px;
+      overflow: auto;
+      max-height: 300px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Business Model Risk Lens</h1>
+
+  <form id="bmcForm">
+    <label>
+      Revenue Streams
+      <textarea name="Revenue Streams" placeholder="e.g. Subscription, Transaction fee"></textarea>
+      <div class="hint">List all revenue sources you plan to use.</div>
+    </label>
+
+    <label>
+      Customer Segments
+      <textarea name="Customer Segments" placeholder="e.g. Small retailers, Freelancers"></textarea>
+      <div class="hint">Who pays you? Be as specific as possible.</div>
+    </label>
+
+    <label>
+      Channels
+      <textarea name="Channels" placeholder="e.g. Online store, Direct sales"></textarea>
+      <div class="hint">How will you deliver your value proposition?</div>
+    </label>
+
+    <label>
+      Value Proposition
+      <textarea name="Value Proposition" placeholder="e.g. Fast, eco-friendly packaging"></textarea>
+      <div class="hint">What problem do you solve or need do you fulfill?</div>
+    </label>
+
+    <label>
+      Cost Structure
+      <textarea name="Cost Structure" placeholder="e.g. Manufacturing, Logistics"></textarea>
+      <div class="hint">Outline your major cost drivers.</div>
+    </label>
+
+    <label>
+      Key Resources
+      <textarea name="Key Resources" placeholder="e.g. Equipment, Partnerships"></textarea>
+      <div class="hint">What assets are essential to your business?</div>
+    </label>
+
+    <label>
+      Key Activities
+      <textarea name="Key Activities" placeholder="e.g. Production, Marketing"></textarea>
+      <div class="hint">What actions must you perform to deliver?</div>
+    </label>
+
+    <label>
+      Key Partners
+      <textarea name="Key Partners" placeholder="e.g. Suppliers, Distributors"></textarea>
+      <div class="hint">Who helps you deliver your value?</div>
+    </label>
+
+    <label>
+      Customer Relationships
+      <textarea name="Customer Relationships" placeholder="e.g. Self-service, Dedicated support"></textarea>
+      <div class="hint">How will you interact with customers?</div>
+    </label>
+
+    <button type="submit">Evaluate Risk</button>
+
+    <pre id="output">Results will appear here</pre>
+  </form>
+
+  <script>
+    document.getElementById('bmcForm').onsubmit = async e => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target).entries());
+      const res = await fetch('/evaluate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const json = await res.json();
+      document.getElementById('output').textContent = JSON.stringify(json, null, 2);
+    };
+  </script>
+
+</body>
+</html>
