@@ -4,47 +4,41 @@
   <meta charset="UTF-8">
   <title>Business Model Risk Lens</title>
   <style>
-    /* Base reset */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* Base styles */
     body {
       font-family: Arial, sans-serif;
-      background: #f0f2f5;
-      color: #333;
+      background-color: #f5f7fa;
       padding: 20px;
+      color: #333;
     }
     h1 {
       text-align: center;
-      margin-bottom: 20px;
-      font-size: 2rem;
       color: #2c3e50;
+      margin-bottom: 20px;
     }
     form {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 15px;
       max-width: 1000px;
       margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
       background: #fff;
       padding: 20px;
       border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
     label {
-      display: flex;
-      flex-direction: column;
+      display: block;
       font-weight: bold;
-      font-size: 0.9rem;
-      color: #34495e;
+      margin-bottom: 5px;
+      font-size: 0.95rem;
     }
-    textarea {
-      margin-top: 5px;
+    select {
+      width: 100%;
       padding: 8px;
-      font-size: 0.9rem;
       border-radius: 4px;
       border: 1px solid #ccc;
-      resize: vertical;
-      min-height: 80px;
+      font-size: 0.95rem;
     }
     .hint {
       font-size: 0.8rem;
@@ -54,25 +48,23 @@
     button {
       grid-column: 1 / -1;
       padding: 12px;
-      font-size: 1rem;
-      background: #27ae60;
+      background-color: #3498db;
       color: #fff;
       border: none;
-      border-radius: 6px;
+      border-radius: 5px;
       cursor: pointer;
-      transition: background 0.2s;
+      font-size: 1rem;
     }
     button:hover {
-      background: #219150;
+      background-color: #2980b9;
     }
-    pre#output {
+    #output {
       grid-column: 1 / -1;
-      background: #2c3e50;
-      color: #ecf0f1;
+      background-color: #ecf0f1;
       padding: 15px;
-      border-radius: 6px;
-      overflow: auto;
-      max-height: 300px;
+      border-radius: 5px;
+      white-space: pre-wrap;
+      font-size: 0.95rem;
       margin-top: 20px;
     }
   </style>
@@ -82,78 +74,148 @@
   <h1>Business Model Risk Lens</h1>
 
   <form id="bmcForm">
-    <label>
-      Revenue Streams
-      <textarea name="Revenue Streams" placeholder="e.g. Subscription, Transaction fee"></textarea>
-      <div class="hint">List all revenue sources you plan to use.</div>
-    </label>
+    <!-- 1. Revenue Streams -->
+    <div>
+      <label for="Revenue Streams">Revenue Streams</label>
+      <select name="Revenue Streams" id="Revenue Streams">
+        <option>Single revenue stream</option>
+        <option>Advertising only</option>
+        <option>Subscription model</option>
+        <option>Freemium with upsell</option>
+        <option>Multiple diversified streams</option>
+      </select>
+      <div class="hint">Diverse revenue sources reduce financial risk.</div>
+    </div>
 
-    <label>
-      Customer Segments
-      <textarea name="Customer Segments" placeholder="e.g. Small retailers, Freelancers"></textarea>
-      <div class="hint">Who pays you? Be as specific as possible.</div>
-    </label>
+    <!-- 2. Customer Segments -->
+    <div>
+      <label for="Customer Segments">Customer Segments</label>
+      <select name="Customer Segments" id="Customer Segments">
+        <option>Undefined target audience</option>
+        <option>Broad mass market</option>
+        <option>Single niche segment</option>
+        <option>Well-researched audience</option>
+        <option>Multiple validated segments</option>
+      </select>
+      <div class="hint">Who your business serves; clarity lowers uncertainty.</div>
+    </div>
 
-    <label>
-      Channels
-      <textarea name="Channels" placeholder="e.g. Online store, Direct sales"></textarea>
-      <div class="hint">How will you deliver your value proposition?</div>
-    </label>
+    <!-- 3. Channels -->
+    <div>
+      <label for="Channels">Channels</label>
+      <select name="Channels" id="Channels">
+        <option>Single online channel</option>
+        <option>Physical retail only</option>
+        <option>Mix of online and offline</option>
+        <option>Partner-driven distribution</option>
+        <option>Omnichannel strategy</option>
+      </select>
+      <div class="hint">Multiple reliable channels improve reach and stability.</div>
+    </div>
 
-    <label>
-      Value Proposition
-      <textarea name="Value Proposition" placeholder="e.g. Fast, eco-friendly packaging"></textarea>
-      <div class="hint">What problem do you solve or need do you fulfill?</div>
-    </label>
+    <!-- 4. Value Proposition -->
+    <div>
+      <label for="Value Proposition">Value Proposition</n   label>
+      <select name="Value Proposition" id="Value Proposition">
+        <option>Undifferentiated product</option>
+        <option>Low-cost advantage only</option>
+        <option>Unique and defensible offering</option>
+        <option>Innovation-driven</option>
+        <option>Sustainability-focused</option>
+      </select>
+      <div class="hint">Strong, unique value propositions reduce competitive threat.</div>
+    </div>
 
-    <label>
-      Cost Structure
-      <textarea name="Cost Structure" placeholder="e.g. Manufacturing, Logistics"></textarea>
-      <div class="hint">Outline your major cost drivers.</div>
-    </label>
+    <!-- 5. Cost Structure -->
+    <div>
+      <label for="Cost Structure">Cost Structure</label>
+      <select name="Cost Structure" id="Cost Structure">
+        <option>High fixed costs</option>
+        <option>High variable costs</option>
+        <option>Balanced cost structure</option>
+        <option>Low operational costs</option>
+        <option>Unstable or unpredictable costs</option>
+      </select>
+      <div class="hint">Predictable and balanced costs reduce financial risk.</div>
+    </div>
 
-    <label>
-      Key Resources
-      <textarea name="Key Resources" placeholder="e.g. Equipment, Partnerships"></textarea>
-      <div class="hint">What assets are essential to your business?</div>
-    </label>
+    <!-- 6. Key Resources -->
+    <div>
+      <label for="Key Resources">Key Resources</label>
+      <select name="Key Resources" id="Key Resources">
+        <option>Lack of critical resources</option>
+        <option>Reliance on single supplier</option>
+        <option>Strong internal resources</option>
+        <option>Access to external partnerships</option>
+        <option>Fully optimized resource network</option>
+      </select>
+      <div class="hint">Diversified resources and suppliers improve resilience.</div>
+    </div>
 
-    <label>
-      Key Activities
-      <textarea name="Key Activities" placeholder="e.g. Production, Marketing"></textarea>
-      <div class="hint">What actions must you perform to deliver?</div>
-    </label>
+    <!-- 7. Key Activities -->
+    <div>
+      <label for="Key Activities">Key Activities</label>
+      <select name="Key Activities" id="Key Activities">
+        <option>Operational inefficiencies</option>
+        <option>Lack of key activities</option>
+        <option>Efficient, well-defined activities</option>
+        <option>R&D heavy focus</option>
+        <option>Balanced activity mix</option>
+      </select>
+      <div class="hint">Well-defined activities support scalable operations.</div>
+    </div>
 
-    <label>
-      Key Partners
-      <textarea name="Key Partners" placeholder="e.g. Suppliers, Distributors"></textarea>
-      <div class="hint">Who helps you deliver your value?</div>
-    </label>
+    <!-- 8. Key Partners -->
+    <div>
+      <label for="Key Partners">Key Partners</label>
+      <select name="Key Partners" id="Key Partners">
+        <option>No strategic partnerships</option>
+        <option>Dependent on few partners</option>
+        <option>Diverse partner network</option>
+        <option>Joint ventures and alliances</option>
+        <option>Strong long-term alliances</option>
+      </select>
+      <div class="hint">Strong partnerships diversify risk and enhance capability.</div>
+    </div>
 
-    <label>
-      Customer Relationships
-      <textarea name="Customer Relationships" placeholder="e.g. Self-service, Dedicated support"></textarea>
-      <div class="hint">How will you interact with customers?</div>
-    </label>
+    <!-- 9. Customer Relationships -->
+    <div>
+      <label for="Customer Relationships">Customer Relationships</label>
+      <select name="Customer Relationships" id="Customer Relationships">
+        <option>Minimal customer engagement</option>
+        <option>Automated or self-service only</option>
+        <option>Dedicated account management</option>
+        <option>Community-driven engagement</option>
+        <option>Multi-tiered support system</option>
+      </select>
+      <div class="hint">Strong relationships drive loyalty and reduce churn.</div>
+    </div>
 
+    <!-- Submit button -->
     <button type="submit">Evaluate Risk</button>
 
-    <pre id="output">Results will appear here</pre>
+    <!-- Output area -->
+    <div id="output">Results will appear here</div>
   </form>
 
   <script>
     document.getElementById('bmcForm').onsubmit = async e => {
       e.preventDefault();
-      const data = Object.fromEntries(new FormData(e.target).entries());
+      const form = new FormData(e.target);
+      const data = Object.fromEntries(form.entries());
       const res = await fetch('/evaluate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       });
       const json = await res.json();
-      document.getElementById('output').textContent = JSON.stringify(json, null, 2);
+      let outputText = `Total Risk: ${json.total_risk}/10 - ${json.overall_level}\n\nDetails:\n`;
+      for (const [section, score] of Object.entries(json.scores)) {
+        outputText += `${section}: ${score}/10 - ${json.risk_levels[section]}\n`;
+      }
+      outputText += `\nRecommendations:\n` + Object.values(json.recommendations).flat().map(r => `• ${r}`).join('\n');
+      document.getElementById('output').textContent = outputText;
     };
   </script>
-
 </body>
 </html>
