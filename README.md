@@ -62,13 +62,7 @@ v
 | score + advice |
 +------------------+
 
-1. **Browser** renders the form (`index.html`).
-2. User submits answers → **POST** to `/evaluate`.
-3. **Backend** (`app.py`) reads `rules.csv`, looks up weights and recommendations per answer.
-4. Scores are averaged into a 1–5 integer, mapped to a label, and a JSON response is returned.
-5. **Frontend** displays the overall risk rating and the top 3 recommendations.
 ```
-
 
 ---
 
