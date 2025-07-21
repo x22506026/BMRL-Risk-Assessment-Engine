@@ -37,9 +37,28 @@ What this project does **not** include:
 
 ## System Architecture
 
-Below is a high-level view of how requests flow through BMRL:
+Below is a high level view of how requests flow through BMRL:
 
-![Architecture Diagram](docs/architecture.png)
+!+---------+            GET /            +-------------+
+| Browser | -------------------------> | index.html  |
++---------+                             +-------------+
+     |                                       |
+     | (form submit)                        |
+     |            POST /evaluate (JSON)      |
+     +-------------------------------------->|
+                                             |
+                                   +--------------------+
+                                   | app.py (Flask)     |
+                                   | load rules.csv     |
+                                   | evaluate answers   |
+                                   +--------------------+
+                                             |
+                                             | return JSON
+                                             v
+                                    +------------------+
+                                    | Browser displays |
+                                    | score + advice   |
+                                    +------------------+
 
 1. **Browser** renders the form (`index.html`).
 2. User submits answers → **POST** to `/evaluate`.
