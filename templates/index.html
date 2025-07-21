@@ -4,69 +4,36 @@
   <meta charset="UTF-8">
   <title>Business Model Risk Lens</title>
   <style>
-    /* Base styles */
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f7fa;
-      padding: 20px;
-      color: #333;
-    }
-    h1 {
-      text-align: center;
-      color: #2c3e50;
-      margin-bottom: 20px;
-    }
+    body { font-family: Arial, sans-serif; background: #f5f7fa; padding: 20px; color: #333; }
+    h1 { text-align: center; color: #2c3e50; margin-bottom: 20px; }
     form {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      max-width: 800px; margin: 0 auto; display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px; background: #fff; padding: 20px;
+      border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-    label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 5px;
-      font-size: 0.95rem;
-    }
+    label { font-weight: bold; margin-bottom: 5px; font-size: 0.95rem; }
     select {
-      width: 100%;
-      padding: 8px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-      font-size: 0.95rem;
+      width: 100%; padding: 8px; border-radius: 4px;
+      border: 1px solid #ccc; font-size: 0.9rem;
     }
-    .hint {
-      font-size: 0.8rem;
-      color: #7f8c8d;
-      margin-top: 4px;
-    }
+    .hint { font-size: 0.8rem; color: #7f8c8d; margin-top: 4px; }
     button {
-      grid-column: 1 / -1;
-      padding: 12px;
-      background-color: #3498db;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1rem;
+      grid-column: 1 / -1; padding: 12px; background: #3498db;
+      color: #fff; border: none; border-radius: 5px;
+      cursor: pointer; font-size: 1rem; margin-top: 10px;
     }
-    button:hover {
-      background-color: #2980b9;
+    button:hover { background: #2980b9; }
+    #output { grid-column: 1 / -1; background: #ecf0f1;
+      padding: 15px; border-radius: 5px; margin-top: 20px;
     }
-    #output {
-      grid-column: 1 / -1;
-      background-color: #ecf0f1;
-      padding: 15px;
-      border-radius: 5px;
-      white-space: pre-wrap;
-      font-size: 0.95rem;
-      margin-top: 20px;
+    .rec-card {
+      background: #fff; border-left: 4px solid #3498db;
+      padding: 10px; margin: 10px 0; border-radius: 4px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
+    .rec-card h4 { margin: 0 0 5px; font-size: 1rem; color: #2c3e50; }
+    .rec-card p { margin: 0; font-size: 0.9rem; color: #444; }
   </style>
 </head>
 <body>
@@ -74,148 +41,105 @@
   <h1>Business Model Risk Lens</h1>
 
   <form id="bmcForm">
-    <!-- 1. Revenue Streams -->
+
+    <!-- 1 -->
     <div>
-      <label for="Revenue Streams">Revenue Streams</label>
-      <select name="Revenue Streams" id="Revenue Streams">
-        <option>Single revenue stream</option>
-        <option>Advertising only</option>
-        <option>Subscription model</option>
-        <option>Freemium with upsell</option>
-        <option>Multiple diversified streams</option>
+      <label for="Revenue Model">1. How will you make money?</label>
+      <select name="Revenue Model" id="Revenue Model">
+        <option>One‑time product/service sales</option>
+        <option>Recurring subscriptions</option>
+        <option>Free basic + paid upgrades</option>
+        <option>Advertising revenue</option>
+        <option>Combination of methods</option>
       </select>
-      <div class="hint">Diverse revenue sources reduce financial risk.</div>
     </div>
 
-    <!-- 2. Customer Segments -->
+    <!-- 2 -->
     <div>
-      <label for="Customer Segments">Customer Segments</label>
-      <select name="Customer Segments" id="Customer Segments">
-        <option>Undefined target audience</option>
-        <option>Broad mass market</option>
-        <option>Single niche segment</option>
-        <option>Well-researched audience</option>
-        <option>Multiple validated segments</option>
+      <label for="Customer Focus">2. Which customers do you serve?</label>
+      <select name="Customer Focus" id="Customer Focus">
+        <option>Still deciding</option>
+        <option>All consumers</option>
+        <option>Specific niche group</option>
+        <option>Large companies</option>
+        <option>Multiple distinct groups</option>
       </select>
-      <div class="hint">Who your business serves; clarity lowers uncertainty.</div>
     </div>
 
-    <!-- 3. Channels -->
+    <!-- 3 -->
     <div>
-      <label for="Channels">Channels</label>
-      <select name="Channels" id="Channels">
-        <option>Single online channel</option>
-        <option>Physical retail only</option>
-        <option>Mix of online and offline</option>
-        <option>Partner-driven distribution</option>
-        <option>Omnichannel strategy</option>
+      <label for="Delivery Channel">3. How will you reach them?</label>
+      <select name="Delivery Channel" id="Delivery Channel">
+        <option>Only online (website/app)</option>
+        <option>Only in‑person (store/office)</option>
+        <option>Both online & in‑person</option>
+        <option>Through partners/resellers</option>
+        <option>Across every channel</option>
       </select>
-      <div class="hint">Multiple reliable channels improve reach and stability.</div>
     </div>
 
-    <!-- 4. Value Proposition -->
+    <!-- 4 -->
     <div>
-      <label for="Value Proposition">Value Proposition</n   label>
+      <label for="Value Proposition">4. What makes you different?</label>
       <select name="Value Proposition" id="Value Proposition">
-        <option>Undifferentiated product</option>
-        <option>Low-cost advantage only</option>
-        <option>Unique and defensible offering</option>
-        <option>Innovation-driven</option>
-        <option>Sustainability-focused</option>
+        <option>Nothing yet</option>
+        <option>Lowest price</option>
+        <option>Highest quality</option>
+        <option>Unique features</option>
+        <option>Eco‑friendly focus</option>
       </select>
-      <div class="hint">Strong, unique value propositions reduce competitive threat.</div>
     </div>
 
-    <!-- 5. Cost Structure -->
+    <!-- 5 -->
     <div>
-      <label for="Cost Structure">Cost Structure</label>
+      <label for="Cost Structure">5. How stable are your costs?</label>
       <select name="Cost Structure" id="Cost Structure">
-        <option>High fixed costs</option>
-        <option>High variable costs</option>
-        <option>Balanced cost structure</option>
-        <option>Low operational costs</option>
-        <option>Unstable or unpredictable costs</option>
+        <option>Mostly fixed, large bills</option>
+        <option>Mostly variable, per‑use</option>
+        <option>Balanced mix of both</option>
+        <option>Very low ongoing costs</option>
+        <option>Costs vary unpredictably</option>
       </select>
-      <div class="hint">Predictable and balanced costs reduce financial risk.</div>
     </div>
 
-    <!-- 6. Key Resources -->
+    <!-- 6 -->
     <div>
-      <label for="Key Resources">Key Resources</label>
+      <label for="Key Resources">6. How well equipped are you?</label>
       <select name="Key Resources" id="Key Resources">
-        <option>Lack of critical resources</option>
-        <option>Reliance on single supplier</option>
-        <option>Strong internal resources</option>
-        <option>Access to external partnerships</option>
-        <option>Fully optimized resource network</option>
+        <option>We lack key tools/skills</option>
+        <option>Depend on one partner/supplier</option>
+        <option>Have enough in‑house resources</option>
+        <option>Work with outside experts</option>
+        <option>Fully resourced & optimized</option>
       </select>
-      <div class="hint">Diversified resources and suppliers improve resilience.</div>
     </div>
 
-    <!-- 7. Key Activities -->
-    <div>
-      <label for="Key Activities">Key Activities</label>
-      <select name="Key Activities" id="Key Activities">
-        <option>Operational inefficiencies</option>
-        <option>Lack of key activities</option>
-        <option>Efficient, well-defined activities</option>
-        <option>R&D heavy focus</option>
-        <option>Balanced activity mix</option>
-      </select>
-      <div class="hint">Well-defined activities support scalable operations.</div>
-    </div>
-
-    <!-- 8. Key Partners -->
-    <div>
-      <label for="Key Partners">Key Partners</label>
-      <select name="Key Partners" id="Key Partners">
-        <option>No strategic partnerships</option>
-        <option>Dependent on few partners</option>
-        <option>Diverse partner network</option>
-        <option>Joint ventures and alliances</option>
-        <option>Strong long-term alliances</option>
-      </select>
-      <div class="hint">Strong partnerships diversify risk and enhance capability.</div>
-    </div>
-
-    <!-- 9. Customer Relationships -->
-    <div>
-      <label for="Customer Relationships">Customer Relationships</label>
-      <select name="Customer Relationships" id="Customer Relationships">
-        <option>Minimal customer engagement</option>
-        <option>Automated or self-service only</option>
-        <option>Dedicated account management</option>
-        <option>Community-driven engagement</option>
-        <option>Multi-tiered support system</option>
-      </select>
-      <div class="hint">Strong relationships drive loyalty and reduce churn.</div>
-    </div>
-
-    <!-- Submit button -->
     <button type="submit">Evaluate Risk</button>
-
-    <!-- Output area -->
-    <div id="output">Results will appear here</div>
   </form>
+
+  <div id="output"></div>
 
   <script>
     document.getElementById('bmcForm').onsubmit = async e => {
       e.preventDefault();
-      const form = new FormData(e.target);
-      const data = Object.fromEntries(form.entries());
+      const data = Object.fromEntries(new FormData(e.target).entries());
       const res = await fetch('/evaluate', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {'Content-Type':'application/json'},
         body: JSON.stringify(data)
       });
       const json = await res.json();
-      let outputText = `Total Risk: ${json.total_risk}/10 - ${json.overall_level}\n\nDetails:\n`;
-      for (const [section, score] of Object.entries(json.scores)) {
-        outputText += `${section}: ${score}/10 - ${json.risk_levels[section]}\n`;
-      }
-      outputText += `\nRecommendations:\n` + Object.values(json.recommendations).flat().map(r => `• ${r}`).join('\n');
-      document.getElementById('output').textContent = outputText;
+
+      let html = `<h2>Your risk score: ${json.score}/5 — ${json.label}</h2>`;
+      html += `<h3>Recommendations:</h3>`;
+      Object.entries(json.recommendations).forEach(([sec, recs]) => {
+        recs.forEach(r => {
+          html += `<div class="rec-card"><h4>${sec}</h4><p>${r}</p></div>`;
+        });
+      });
+      document.getElementById('output').innerHTML = html;
     };
   </script>
+
 </body>
 </html>

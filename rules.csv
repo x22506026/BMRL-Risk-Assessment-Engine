@@ -1,0 +1,36 @@
+section,option,weight,recommendation
+Revenue Model,"One‑time product/service sales",4,"Relying on single sales is risky—consider a secondary revenue stream."
+Revenue Model,"Recurring subscriptions",2,"Subscriptions need retention plans to keep customers paying."
+Revenue Model,"Free basic + paid upgrades",3,"Optimize your upgrade funnel to convert free users."
+Revenue Model,"Advertising revenue",3,"Ad revenue can fluctuate—diversify your income."
+Revenue Model,"Combination of methods",1,"Maintain focus across your revenue mix."
+
+Customer Focus,"Still deciding",5,"Define your target customers to sharpen your marketing."
+Customer Focus,"All consumers",3,"Serving everyone can dilute your message—consider a niche."
+Customer Focus,"Specific niche group",2,"Niches limit scale but increase engagement—plan accordingly."
+Customer Focus,"Large organizations",2,"B2B cycles are long; allocate resources for outreach."
+Customer Focus,"Multiple distinct groups",1,"Managing multiple segments needs clear resource planning."
+
+Delivery Channel,"Only online (website/app)",3,"Online‑only risks platform changes—add a backup channel."
+Delivery Channel,"Only in‑person (store/office)",4,"Physical‑only limits reach—explore digital channels."
+Delivery Channel,"Both online & in‑person",1,"Hybrid channels improve resilience—keep consistent branding."
+Delivery Channel,"Through partners/resellers",2,"Partner dependence needs strong SLAs to avoid bottlenecks."
+Delivery Channel,"Across every channel",1,"Omnichannel is powerful—ensure cohesive experience."
+
+Value Proposition,"Nothing yet",5,"You need a clear differentiator to stand out."
+Value Proposition,"Lowest price option",3,"Competing on price can erode margins—add value."
+Value Proposition,"Highest quality",1,"High quality works—invest in brand to justify pricing."
+Value Proposition,"Unique features",2,"Innovation is great—make sure users see the benefit."
+Value Proposition,"Eco‑friendly focus",2,"Sustainability is valued—align your supply‑chain."
+
+Cost Structure,"Mostly fixed, large bills",4,"Convert fixed to variable costs to lower risk."
+Cost Structure,"Mostly variable, per‑use",3,"Variable costs can spike—implement cost‑controls."
+Cost Structure,"Balanced mix of both",1,"Balanced costs support stability—keep monitoring."
+Cost Structure,"Very low ongoing costs",1,"Leverage savings into growth initiatives."
+Cost Structure,"Costs vary unpredictably",5,"High volatility is dangerous—plan contingencies."
+
+Key Resources,"We lack key tools/skills",5,"Acquire essential tools or hire skilled talent immediately."
+Key Resources,"Depend on one partner/supplier",4,"Add backup suppliers to avoid disruptions."
+Key Resources,"Have enough in‑house resources",1,"Leverage your team’s strengths and plan for scale."
+Key Resources,"Work with outside experts",2,"Manage external contracts carefully."
+Key Resources,"Fully resourced & optimized",1,"Maintain regular audits to stay optimized."
