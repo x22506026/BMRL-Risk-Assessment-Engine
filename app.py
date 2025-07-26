@@ -1,62 +1,63 @@
-from flask import Flask, request, jsonify, render_template
 import csv
+from flask import Flask, request, jsonify, render_template
 
 app = Flask(__name__)
 
-# Load rules from CSV at startup
-RULES = []
-with open('rules.csv', newline='', encoding='utf-8') as f:
-    reader = csv.DictReader(f)
-    for row in reader:
-        # Convert weight to int
-        row['weight'] = int(row['weight'])
-        RULES.append(row)
+# loading csv of rules into memory at startup
+def load_rules(path="rules.csv"):
+    rules = {}
+    with open(path, newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            section = row["section"]
+            option = row["option"]
+            weight = int(row["weight"])
+            rec = row["recommendation"]
+            rules[(section, option)] = (weight, rec)
+    return rules
 
-def evaluate_section(section, input_text):
-    """
-    Look up the exact row in RULES matching section + option.
-    Returns (weight_0_to_5, [recommendation]).
-    """
-    for r in RULES:
-        if r['section'] == section and r['option'] == input_text:
-            return min(r['weight'], 5), [r['recommendation']]
-    # If no rule found, return zero risk
-    return 0, []
+# in-memory store of all (section, option) → (weight, recommendation)
+RULES = load_rules()
 
-@app.route('/')
-def home():
-    return render_template('index.html')
+# route to serve the main risk‑assessment form
+@app.route("/", methods=["GET"])
+def index():
+    return render_template("index.html")
 
-@app.route('/evaluate', methods=['POST'])
+# route to process JSON payload and return risk score + recommendations
+@app.route("/evaluate", methods=["POST"])
 def evaluate():
-    data = request.get_json()
-    total_raw = 0
-    section_recs = {}
+    # parsing incoming JSON payload
+    data = request.get_json() or {}
+    # validation: must have exactly six answers
+    if not isinstance(data, dict) or len(data) != 6:
+        return jsonify(error="Invalid input: exactly 6 answers required."), 400
 
-    # Sum weights from CSV for each answer
+    total_weight = 0
+    recs = []
+    # computing total weight and collecting recommendations
     for section, answer in data.items():
-        w, recs = evaluate_section(section, answer)
-        total_raw += w
-        section_recs[section] = recs
+        key = (section, answer)
+        if key not in RULES:
+            return jsonify(error=f"Invalid answer for section '{section}'."), 400
+        weight, recommendation = RULES[key]
+        total_weight += weight
+        recs.append(recommendation)
 
-    # Average out of 5, rounded to whole
-    avg = round(total_raw / len(data))
-    avg = max(1, min(5, avg))
-
-    # Map to label
+    # computing average score (1–5) and mapping to label
+    avg = round(total_weight / len(data))
     labels = {
         1: "No/Very Low Risk",
         2: "Low Risk",
         3: "Moderate Risk",
-        4: "Risky",
-        5: "High Risk"
+        4: "High Risk",
+        5: "Very High Risk"
     }
+    label = labels.get(avg, "Unknown")
 
-    return jsonify({
-        "score": avg,
-        "label": labels[avg],
-        "recommendations": section_recs
-    })
+    # returning JSON response with score, label, and six recommendations
+    return jsonify(score=avg, label=label, recommendations=recs), 200
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    # start Flask app on all interfaces, debug mode for development
+    app.run(host="0.0.0.0", port=5000, debug=True)

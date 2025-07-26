@@ -4,36 +4,102 @@
   <meta charset="UTF-8">
   <title>Business Model Risk Lens</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #f5f7fa; padding: 20px; color: #333; }
-    h1 { text-align: center; color: #2c3e50; margin-bottom: 20px; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
     form {
-      max-width: 800px; margin: 0 auto; display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px; background: #fff; padding: 20px;
-      border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-    label { font-weight: bold; margin-bottom: 5px; font-size: 0.95rem; }
+    label {
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+      display: block;
+    }
     select {
-      width: 100%; padding: 8px; border-radius: 4px;
-      border: 1px solid #ccc; font-size: 0.9rem;
+      width: 100%;
+      padding: 10px;
+      font-size: 1.1rem;
+      line-height: 1.4;
+      border: 1px solid #ccc;
+      border-radius: 4px;
     }
-    .hint { font-size: 0.8rem; color: #7f8c8d; margin-top: 4px; }
+    .selection-info {
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 6px;
+      margin-bottom: 10px;
+      text-align: center;
+      font-style: italic;
+      line-height: 1.4;
+    }
     button {
-      grid-column: 1 / -1; padding: 12px; background: #3498db;
-      color: #fff; border: none; border-radius: 5px;
-      cursor: pointer; font-size: 1rem; margin-top: 10px;
+      grid-column: 1 / -1;
+      padding: 14px;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      margin-top: 20px;
     }
     button:hover { background: #2980b9; }
-    #output { grid-column: 1 / -1; background: #ecf0f1;
-      padding: 15px; border-radius: 5px; margin-top: 20px;
+
+    #output {
+      max-width: 900px;
+      margin: 40px auto 0;
+      text-align: center;
+    }
+    .score-main {
+      font-size: 2.2rem;
+      color: #2c3e50;
+      margin-bottom: 8px;
+    }
+    .score-legend {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 20px;
+      line-height: 1.4;
     }
     .rec-card {
-      background: #fff; border-left: 4px solid #3498db;
-      padding: 10px; margin: 10px 0; border-radius: 4px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 650px;
+      background: #fff;
+      border-left: 6px solid #e67e22;
+      padding: 18px;
+      margin: 12px auto;
+      border-radius: 4px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-    .rec-card h4 { margin: 0 0 5px; font-size: 1rem; color: #2c3e50; }
-    .rec-card p { margin: 0; font-size: 0.9rem; color: #444; }
+    .rec-card h4 {
+      margin: 0 0 6px;
+      font-size: 1.2rem;
+      color: #e67e22;
+    }
+    .rec-card p {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #444;
+    }
   </style>
 </head>
 <body>
@@ -41,77 +107,82 @@
   <h1>Business Model Risk Lens</h1>
 
   <form id="bmcForm">
-
-    <!-- 1 -->
+    <!-- 1. Revenue Model -->
     <div>
       <label for="Revenue Model">1. How will you make money?</label>
       <select name="Revenue Model" id="Revenue Model">
-        <option>One‑time product/service sales</option>
+        <option>One-time product/service sales</option>
         <option>Recurring subscriptions</option>
         <option>Free basic + paid upgrades</option>
         <option>Advertising revenue</option>
         <option>Combination of methods</option>
       </select>
+      <div class="selection-info" id="info-Revenue Model"></div>
     </div>
 
-    <!-- 2 -->
+    <!-- 2. Customer Focus -->
     <div>
       <label for="Customer Focus">2. Which customers do you serve?</label>
       <select name="Customer Focus" id="Customer Focus">
         <option>Still deciding</option>
         <option>All consumers</option>
         <option>Specific niche group</option>
-        <option>Large companies</option>
+        <option>Large organizations</option>
         <option>Multiple distinct groups</option>
       </select>
+      <div class="selection-info" id="info-Customer Focus"></div>
     </div>
 
-    <!-- 3 -->
+    <!-- 3. Delivery Channel -->
     <div>
       <label for="Delivery Channel">3. How will you reach them?</label>
       <select name="Delivery Channel" id="Delivery Channel">
         <option>Only online (website/app)</option>
-        <option>Only in‑person (store/office)</option>
-        <option>Both online & in‑person</option>
+        <option>Only in-person (store/office)</option>
+        <option>Both online & in-person</option>
         <option>Through partners/resellers</option>
         <option>Across every channel</option>
       </select>
+      <div class="selection-info" id="info-Delivery Channel"></div>
     </div>
 
-    <!-- 4 -->
+    <!-- 4. Value Proposition -->
     <div>
       <label for="Value Proposition">4. What makes you different?</label>
       <select name="Value Proposition" id="Value Proposition">
         <option>Nothing yet</option>
-        <option>Lowest price</option>
+        <option>Lowest price option</option>
         <option>Highest quality</option>
         <option>Unique features</option>
-        <option>Eco‑friendly focus</option>
+        <option>Eco-friendly focus</option>
       </select>
+      <div class="selection-info" id="info-Value Proposition"></div>
     </div>
 
-    <!-- 5 -->
+    <!-- 5. Cost Structure -->
     <div>
       <label for="Cost Structure">5. How stable are your costs?</label>
       <select name="Cost Structure" id="Cost Structure">
         <option>Mostly fixed, large bills</option>
-        <option>Mostly variable, per‑use</option>
+        <option>Mostly variable, per-use</option>
         <option>Balanced mix of both</option>
         <option>Very low ongoing costs</option>
         <option>Costs vary unpredictably</option>
       </select>
+      <div class="selection-info" id="info-Cost Structure"></div>
     </div>
 
-    <!-- 6 -->
+    <!-- 6. Key Resources -->
     <div>
       <label for="Key Resources">6. How well equipped are you?</label>
       <select name="Key Resources" id="Key Resources">
         <option>We lack key tools/skills</option>
         <option>Depend on one partner/supplier</option>
-        <option>Have enough in‑house resources</option>
+        <option>Have enough in-house resources</option>
         <option>Work with outside experts</option>
         <option>Fully resourced & optimized</option>
       </select>
+      <div class="selection-info" id="info-Key Resources"></div>
     </div>
 
     <button type="submit">Evaluate Risk</button>
@@ -120,9 +191,97 @@
   <div id="output"></div>
 
   <script>
+    // inline descriptions for each dropdown value
+    const descriptions = {
+      "Revenue Model": {
+        "One-time product/service sales":
+          "You earn only per sale which can be unpredictable. Add a recurring option for stability.",
+        "Recurring subscriptions":
+          "You receive predictable income when subscribers stay on; focus on retention.",
+        "Free basic + paid upgrades":
+          "Offer a free tier to attract users and guide them toward paid features.",
+        "Advertising revenue":
+          "Use ad income wisely but diversify so you are not fully reliant on traffic.",
+        "Combination of methods":
+          "Manage multiple income streams effectively to balance risk and return."
+      },
+      "Customer Focus": {
+        "Still deciding":
+          "Research your market now to identify who will pay for your solution.",
+        "All consumers":
+          "Serving everyone can water down your message; pick a profitable segment.",
+        "Specific niche group":
+          "Focus on one group for strong engagement then expand thoughtfully.",
+        "Large organizations":
+          "B2B deals can be lucrative but require longer sales cycles.",
+        "Multiple distinct groups":
+          "Allocate resources clearly to serve each audience well."
+      },
+      "Delivery Channel": {
+        "Only online (website/app)":
+          "Great scale but vulnerable to platform changes; add an offline fallback.",
+        "Only in-person (store/office)":
+          "Personal touch builds loyalty but limits geographic reach.",
+        "Both online & in-person":
+          "Hybrid channels give flexibility; keep branding consistent.",
+        "Through partners/resellers":
+          "Leverage partners’ networks but monitor performance closely.",
+        "Across every channel":
+          "Omnichannel maximizes exposure; coordinate marketing across all."
+      },
+      "Value Proposition": {
+        "Nothing yet":
+          "Define what makes you unique so customers have a reason to buy.",
+        "Lowest price option":
+          "Competing on price erodes margins; add service or features to differentiate.",
+        "Highest quality":
+          "Charge premium pricing but prove quality through demos or trials.",
+        "Unique features":
+          "Show how your innovation solves customer problems better than rivals.",
+        "Eco-friendly focus":
+          "Highlight sustainable practices and certifications to build trust."
+      },
+      "Cost Structure": {
+        "Mostly fixed, large bills":
+          "Convert fixed costs to variable where possible to handle downturns.",
+        "Mostly variable, per-use":
+          "Monitor usage costs to prevent budget overruns as you grow.",
+        "Balanced mix of both":
+          "A healthy cost mix keeps operations resilient and scalable.",
+        "Very low ongoing costs":
+          "Invest savings into growth areas like marketing or R&D.",
+        "Costs vary unpredictably":
+          "Set aside reserves and reforecast frequently to manage volatility."
+      },
+      "Key Resources": {
+        "We lack key tools/skills":
+          "Identify critical gaps and hire or partner to fill them now.",
+        "Depend on one partner/supplier":
+          "Secure alternative suppliers to prevent disruptions.",
+        "Have enough in-house resources":
+          "Document processes and train your team for consistent delivery.",
+        "Work with outside experts":
+          "Use clear contracts and metrics to manage external specialists.",
+        "Fully resourced & optimized":
+          "Regularly audit resources to keep efficiency high as you grow."
+      }
+    };
+
+    // bind each dropdown to its hint paragraph
+    Object.keys(descriptions).forEach(section => {
+      const sel = document.getElementById(section);
+      const info = document.getElementById(`info-${section}`);
+      sel.addEventListener('change', () => {
+        info.textContent = descriptions[section][sel.value] || '';
+      });
+      sel.dispatchEvent(new Event('change'));
+    });
+
+    // form submission handler
     document.getElementById('bmcForm').onsubmit = async e => {
       e.preventDefault();
       const data = Object.fromEntries(new FormData(e.target).entries());
+
       const res = await fetch('/evaluate', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
@@ -130,14 +289,20 @@
       });
       const json = await res.json();
 
-      let html = `<h2>Your risk score: ${json.score}/5 — ${json.label}</h2>`;
-      html += `<h3>Recommendations:</h3>`;
-      Object.entries(json.recommendations).forEach(([sec, recs]) => {
-        recs.forEach(r => {
-          html += `<div class="rec-card"><h4>${sec}</h4><p>${r}</p></div>`;
-        });
+      // build output HTML
+      let out = `<div class="score-main">Your risk score: ${json.score}/5 — ${json.label}</div>`;
+      out += `<div class="score-legend">1 = No Risk  2 = Low  3 = Moderate  4 = High  5 = Very High</div>`;
+
+      // correctly render each full recommendation
+      json.recommendations.forEach((rec, idx) => {
+        out += `
+          <div class="rec-card">
+            <h4>Recommendation ${idx + 1}</h4>
+            <p>${rec}</p>
+          </div>`;
       });
-      document.getElementById('output').innerHTML = html;
+
+      document.getElementById('output').innerHTML = out;
     };
   </script>
 
