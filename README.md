@@ -6,7 +6,7 @@ A rule based tool to help early stage startup founders, incubators, and stakehol
 
 ## Overview
 
-The **Business Model Risk Lens (BMRL)** evaluates a startup’s business model by asking six key questions inspired by the Business Model Canvas. Each answer carries a risk score (1 = low, 5 = high), and the tool averages them into a single rating and supplies tailored advice. This approach gives founders a quick way to understand their structural weaknesses before investing more time or money.
+The **Business Model Risk Lens (BMRL)** evaluates a startups business model by asking six key questions inspired by the Business Model Canvas. Each answer carries a risk score (1 = low, 5 = high), and the tool averages them into a single rating and supplies tailored advice. This approach gives founders a quick way to understand their structural weaknesses before investing more time or money.
 
 ---
 
@@ -29,7 +29,7 @@ This project covers:
 What this project does **not** include:
 
 * User authentication or data storage beyond the session.
-* Machine learning or predictive analytics as it is only a transparent, rule based logic.
+* Machine learning or predictive analytics as it is only a transparent, rule based logic flask API.
 
 ---
 
@@ -42,10 +42,13 @@ What this project does **not** include:
    venv\Scripts\activate
    # macOS/Linux:
    source venv/bin/activate
-3. Install the required Python packages:
+3. Install the required Python packages in terminal:
    pip install -r requirements.txt
-4. python app.py
-5. http://localhost:5000
+4. Run 'py app.py' on terminal to serve the flask
+5. Open http://localhost:5000 link when it is generted
+6. Select an option from the dropdowns under each of the 6 questions
+7. Submit form by pressing 'Evaluate Risk'
+8. See result score and under it will be recommendations of what can be done to improve score and minimise risk of the business.
 
 
 
